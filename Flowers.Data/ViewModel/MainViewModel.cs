@@ -29,8 +29,9 @@ namespace Flowers.ViewModel
             _navigationService = navigationService;
             Flowers = new ObservableCollection<FlowerViewModel>();
 
-            if (IsInDesignMode)
-            {
+			// To fix until the app bar appears properly.
+			// if (IsInDesignMode)
+			{
                 RefreshCommand.Execute(null);
             }
         }

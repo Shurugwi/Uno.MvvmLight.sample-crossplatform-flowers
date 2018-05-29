@@ -1,15 +1,16 @@
 ﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:xamarin="http://uno.ui/xamarin"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       xmlns:ignore="http://www.galasoft.ch/ignore"
       x:Class="Flowers.MainPage"
-      mc:Ignorable="d ignore">
+      mc:Ignorable="d ignore xamarin">
 
     <Page.BottomAppBar>
-        <CommandBar>
+        <CommandBar xamarin:Style="{StaticResource NativeDefaultCommandBar}">
 
             <AppBarButton Icon="Refresh"
                           Label="Refresh"
@@ -40,10 +41,10 @@
                        RelativePanel.Below="AppTitle"
                        Style="{StaticResource PageTitleTextStyle}" />
 
-            <Image Source="Assets/Icon.png"
+            <!--<Image Source="Assets/Icon.png"
                    RelativePanel.AlignTopWithPanel="True"
                    RelativePanel.AlignRightWithPanel="True"
-                   Style="{StaticResource ApplicationIconStyle}" />
+                   Style="{StaticResource ApplicationIconStyle}" />-->
 
             <TextBlock Text="{Binding LastLoadedFormatted, Mode=OneWay}"
                        RelativePanel.Below="PageTitle"

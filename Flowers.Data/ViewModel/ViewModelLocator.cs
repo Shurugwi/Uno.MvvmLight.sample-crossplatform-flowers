@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Flowers.Design;
@@ -18,7 +20,7 @@ namespace Flowers.ViewModel
         static ViewModelLocator()
         {
             Debug.WriteLine("ViewModelLocator");
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+            ServiceLocator.SetLocatorProvider(() => new Wrapper(SimpleIoc.Default));
 
             if (UseDesignData)
             {
@@ -37,7 +39,23 @@ namespace Flowers.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
-        [SuppressMessage("Microsoft.Performance",
+		// This is required until the mvvmlight extras are built properly.
+		private class Wrapper : IServiceLocator
+		{
+			private SimpleIoc _inner;
+
+			public Wrapper(SimpleIoc @default) => this._inner = @default;
+
+			public IEnumerable<object> GetAllInstances(Type serviceType) => _inner.GetAllInstances(serviceType);
+			public IEnumerable<TService> GetAllInstances<TService>() => _inner.GetAllInstances<TService>();
+			public object GetInstance(Type serviceType) => _inner.GetInstance(serviceType);
+			public object GetInstance(Type serviceType, string key) => _inner.GetInstance(serviceType, key);
+			public TService GetInstance<TService>() => _inner.GetInstance<TService>();
+			public TService GetInstance<TService>(string key) => _inner.GetInstance<TService>(key);
+			public object GetService(Type serviceType) => _inner.GetService(serviceType);
+		}
+
+		[SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
         public MainViewModel Main

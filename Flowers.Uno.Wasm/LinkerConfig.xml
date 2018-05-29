@@ -1,0 +1,21 @@
+﻿<linker>
+	<assembly fullname="Flowers">
+		<type fullname="*" />
+	</assembly>
+	<assembly fullname="Flowers.Data">
+		<type fullname="*" />
+	</assembly>
+	<assembly fullname="Uno.UI">
+		<type fullname="*" />
+	</assembly>
+	<assembly fullname="GalaSoft.MvvmLight">
+		<type fullname="*" />
+	</assembly>
+	<assembly fullname="GalaSoft.MvvmLight.Platform">
+		<type fullname="*" />
+	</assembly>
+	<assembly fullname="System.Core">
+		<!-- This is required by JSon.NET and any expression.Compile caller -->
+		<type fullname="System.Linq.Expressions*" />
+	</assembly>
+</linker>

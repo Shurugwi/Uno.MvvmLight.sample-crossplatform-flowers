@@ -4,7 +4,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Flowers.Helpers
 {
-    public class BaseSecondaryView : Page
+    public partial class BaseSecondaryView : Page
     {
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

@@ -12,11 +12,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            
-            <vm:ViewModelLocator x:Key="Locator"
-                                 d:IsDataSource="True" />
-
-            <x:String x:Key="ApplicationName">FLOWERS</x:String>
         </ResourceDictionary>
     </Application.Resources>
 
