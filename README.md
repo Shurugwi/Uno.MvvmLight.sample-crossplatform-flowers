@@ -1,3 +1,9 @@
+# Uno.Flowers	
+
+This is the [Uno-based](http://platform.uno) port of the Flowers sample app for MVVM Light Toolkit.
+
+The [Flowers](Flowers.sln) solution contains heads for iOS, Android and WebAssembly platforms.
+
 # Flowers
 
 Cross platform example with
