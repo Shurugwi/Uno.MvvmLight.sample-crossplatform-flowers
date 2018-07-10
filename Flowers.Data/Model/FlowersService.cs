@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Flowers.Data.Helpers;
 using Newtonsoft.Json;
 
 namespace Flowers.Model
@@ -14,7 +15,7 @@ namespace Flowers.Model
 
         public async Task<IList<Flower>> Refresh()
         {
-            using (var client = new HttpClient())
+            using (var client = HttpClientHelper.CreateHttpClient())
             {
                 var url = string.Format(
                     RequestUrl,
@@ -39,7 +40,7 @@ namespace Flowers.Model
 
         public async Task<bool> Save(Flower flower)
         {
-            using (var client = new HttpClient())
+            using (var client = HttpClientHelper.CreateHttpClient())
             {
                 var url = string.Format(
                     RequestUrl,

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using Microsoft.Extensions.Logging;
 using Uno.Extensions;
 
@@ -11,8 +12,15 @@ namespace Flowers.Wasm
 		static void Main(string[] args)
 		{
 			ConfigureFilters(LogExtensionPoint.AmbientLoggerFactory);
+
+			// Override the default http client builder to use the Uno Wasm HttpHandler
+			// which mono does not yet provide.
+			Data.Helpers.HttpClientHelper.HttpClientBuilder =
+				() => new HttpClient(new Uno.UI.Wasm.WasmHttpHandler());
+
 			_app = new App();
 		}
+
 		static void ConfigureFilters(ILoggerFactory factory)
 		{
 			factory
